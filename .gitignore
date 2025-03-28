@@ -175,3 +175,7 @@ cython_debug/
 
 # users database file
 users.db
+
+# list of submitted jobs
+job_tracker.json
+job_tracker.json.*
