@@ -179,3 +179,6 @@ users.db
 # list of submitted jobs
 job_tracker.json
 job_tracker.json.*
+
+# output files folder
+output_files
