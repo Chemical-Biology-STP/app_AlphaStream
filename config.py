@@ -1,0 +1,5 @@
+#JOB_TRACKER_FILE = "job_tracker.json"
+JOB_TRACKER_FILE = "app_AlphaStream/job_tracker.json"
+REMOTE_HOST = "login.nemo.thecrick.org"
+REMOTE_USER = "yipy"
+REMOTE_WORKING_DIR = "/nemo/stp/chemicalbiology/home/users/yipy/Documents/af3"
