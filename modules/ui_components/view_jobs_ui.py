@@ -6,9 +6,6 @@ from modules.utils import load_submitted_jobs, save_submitted_job
 
 
 def render_view_jobs_tab(email):
-    """
-    Displays submitted jobs and provides options to refresh statuses.
-    """
     st.header("View Submitted Jobs")
 
     jobs = load_submitted_jobs()
@@ -23,7 +20,7 @@ def render_view_jobs_tab(email):
 
     # Filter jobs that are still running or pending
     active_jobs = [
-        job for job in user_jobs if job["status"] in ["Pending", "RUNNING"]
+        job for job in user_jobs if job["status"] in ["PENDING", "RUNNING"]
     ]
 
     # "Refresh All" button to check all running/pending jobs
@@ -56,8 +53,8 @@ def render_view_jobs_tab(email):
             st.write(f"**Current Status:** {job_status}")
 
             # Individual Refresh button for each job
-            if job_status in ["Pending", "RUNNING"]:
-                if st.button(f"🔄 Refresh", key=f"refresh_{job_id}"):
+            if job_status in ["PENDING", "RUNNING"]:
+                if st.button("🔄 Refresh", key=f"refresh_{job_id}"):
                     with st.spinner(f"Checking status of {job_name}..."):
                         current_status, error = (
                             job_status_checker.check_status(job_id)
@@ -79,7 +76,7 @@ def render_view_jobs_tab(email):
                 st.error("❌ Job was cancelled.")
 
             # Job is still running
-            elif job_status in ["Pending", "RUNNING"]:
+            elif job_status in ["PENDING", "RUNNING"]:
                 st.info("🔄 Job is still in progress. Check back later.")
 
     st.success("View updated statuses or refresh as needed.")

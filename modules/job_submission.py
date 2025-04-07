@@ -1,7 +1,6 @@
 import json
 import os
 import re
-from uuid import uuid4
 
 from config import REMOTE_WORKING_DIR
 from modules.remote_server import RemoteServer
@@ -82,16 +81,16 @@ class JobSubmission:
             job_data = {
                 "job_id": slurm_job_id,
                 "job_name": job_name,
-                "status": "Pending",
+                "status": "PENDING",
             }
             save_submitted_job(email, job_data)
 
             return slurm_job_id, None  # Successfully submitted, return job ID
         else:
             job_data = {
-                "job_id": "Failed",
+                "job_id": "FAILED",
                 "job_name": job_name,
-                "status": "Failed",
+                "status": "FAILED",
             }
             save_submitted_job(email, job_data)
             return None, f"Job submission failed: {result_error}"
